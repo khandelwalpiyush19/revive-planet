@@ -96,7 +96,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
         const user = await getUserByEmail(userInfo.email);
         if (user) {
           const unreadNotifications = await getUnreadNotifications(user.id);
-         // @ts-ignore
+         //@ts-expect-error
           setNotifications(unreadNotifications);
         }
       }
@@ -195,7 +195,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
   const handleNotificationClick = async (notificationId: number) => {
     await markNotificationAsRead(notificationId);
     setNotifications(prevNotifications =>
-    // @ts-ignore
+     //@ts-expect-error
       prevNotifications.filter(notification => notification.id !== notificationId)
     );
   };
@@ -252,17 +252,17 @@ export default function Header({ onMenuClick }: HeaderProps) {
               {notifications.length > 0 ? (
                 notifications.map((notification) => (
                   <DropdownMenuItem
-                    //@ts-ignore
+                     //@ts-expect-error
                     key={notification.id}
                     onClick={() => handleNotificationClick
-                      //@ts-ignore
+                       //@ts-expect-error
                       (notification.id)}
                   >
                     <div className="flex flex-col">
                       <span className="font-medium">
-                  { /* @ts-ignore*/}
+                  { /*  @ts-expect-error*/}
                       {notification.type}</span>
-                      { /* @ts-ignore*/}
+                      { /*@ts-expect-error*/}
                       <span className="text-sm text-gray-500">{notification.message}</span>
                     </div>
                   </DropdownMenuItem>

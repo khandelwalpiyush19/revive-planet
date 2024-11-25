@@ -1,4 +1,4 @@
-// @typescript-eslint/ban-ts-comment
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import { useState, useEffect } from "react"
 import Link from "next/link"
@@ -47,9 +47,11 @@ interface HeaderProps {
 }
 
 export default function Header({ onMenuClick }: HeaderProps) {
+  // eslint-disable-next-line
   const [provider, setProvider] = useState<IProvider | null>(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
+  // eslint-disable-next-line
   const [userInfo, setUserInfo] = useState<any>(null);
   // const pathname = usePathname()
   const [notifications, setNotifications] = useState<Notification[]>([]);

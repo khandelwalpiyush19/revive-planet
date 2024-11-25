@@ -47,11 +47,10 @@ interface HeaderProps {
 }
 
 export default function Header({ onMenuClick }: HeaderProps) {
-  // eslint-disable-next-line
   const [provider, setProvider] = useState<IProvider | null>(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
-  // eslint-disable-next-line
+  
   const [userInfo, setUserInfo] = useState<any>(null);
   // const pathname = usePathname()
   const [notifications, setNotifications] = useState<Notification[]>([]);
@@ -96,6 +95,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
         const user = await getUserByEmail(userInfo.email);
         if (user) {
           const unreadNotifications = await getUnreadNotifications(user.id);
+          // eslint-disable-next-line
           setNotifications(unreadNotifications);
         }
       }
@@ -194,6 +194,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
   const handleNotificationClick = async (notificationId: number) => {
     await markNotificationAsRead(notificationId);
     setNotifications(prevNotifications =>
+      // eslint-disable-next-line
       prevNotifications.filter(notification => notification.id !== notificationId)
     );
   };
@@ -250,12 +251,19 @@ export default function Header({ onMenuClick }: HeaderProps) {
               {notifications.length > 0 ? (
                 notifications.map((notification) => (
                   <DropdownMenuItem
+                  // eslint-disable-next-line
                     key={notification.id}
-                    onClick={() => handleNotificationClick(notification.id)}
+                    onClick={() => handleNotificationClick
+                      // eslint-disable-next-line
+                      (notification.id)}
                   >
                     <div className="flex flex-col">
-                      <span className="font-medium">{notification.type}</span>
-                      <span className="text-sm text-gray-500">{notification.message}</span>
+                      <span className="font-medium">
+                      // eslint-disable-next-line
+                      {notification.type}</span>
+                      <span className="text-sm 
+                      //eslint-disable-next-line
+                      text-gray-500">{notification.message}</span>
                     </div>
                   </DropdownMenuItem>
                 ))

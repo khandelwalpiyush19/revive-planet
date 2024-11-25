@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from 'next/navigation'
 import { Button } from "@/components/ui/button"
-import { Menu, Coins, Leaf, Search, Bell, User, ChevronDown, LogIn, LogOut } from "lucide-react"
+import { Menu, Coins, Leaf, Search, Bell, User, ChevronDown, LogIn,   } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -46,12 +46,12 @@ interface HeaderProps {
   totalEarnings: number;
 }
 
-export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
+export default function Header({ onMenuClick }: HeaderProps) {
   const [provider, setProvider] = useState<IProvider | null>(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
   const [userInfo, setUserInfo] = useState<any>(null);
-  const pathname = usePathname()
+  // const pathname = usePathname()
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const isMobile = useMediaQuery("(max-width: 768px)")
   const [balance, setBalance] = useState(0)

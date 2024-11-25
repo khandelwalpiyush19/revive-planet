@@ -26,7 +26,7 @@ export default function LeaderboardPage() {
 
             <p className="text-md font-bold">Clean Up:</p>Volunteers step in to clean these areas, ensuring every piece of trash is properly disposed of.
 
-            <p className="text-md font-bold">Earn Rewards:</p> For every cleanup effort, users earn rewards that can be redeemed for various incentives. It's our way of saying "thank you" for helping to revive our planet.</div>
+            <p className="text-md font-bold">Earn Rewards:</p> For every cleanup effort, users earn rewards that can be redeemed for various incentives. It&apos;s our way of saying &quot;thank you&quot; for helping to revive our planet.</div>
 
             <span className="text-lg mx-2 font-bold">Our Supporters
             </span>
@@ -34,7 +34,7 @@ export default function LeaderboardPage() {
 
             <span className="text-lg mx-2 font-bold">Join Us </span>
 
-            <div className="mx-2 my-2">Whether you're a seasoned environmentalist or someone looking to make a positive impact, there's a place for you at Revive Planet. Together, we can create a cleaner, healthier world for future generations.</div>
+            <div className="mx-2 my-2">Whether you&apos;re a seasoned environmentalist or someone looking to make a positive impact, there&apos;s a place for you at Revive Planet. Together, we can create a cleaner, healthier world for future generations.</div>
                 </div>
     </div>
     

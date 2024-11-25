@@ -8,6 +8,7 @@ import { Libraries } from '@react-google-maps/api';
 import { createUser, getUserByEmail, createReport, getRecentReports } from '@/utils/db/actions';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast'
+import Image from 'next/image';
 
 const geminiApiKey = process.env.GEMINI_API_KEY;
 const googleMapsApiKey = process.env.GOOGLE_MAPS_API_KEY;
@@ -144,7 +145,7 @@ export default function ReportPage() {
           setVerificationStatus('failure');
         }
       } catch (error) {
-        console.error('Failed to parse JSON response:', text);
+        console.log("error", error);
         setVerificationStatus('failure');
       }
     } catch (error) {
@@ -248,7 +249,7 @@ export default function ReportPage() {
         
         {preview && (
           <div className="mt-4 mb-8">
-            <img src={preview} alt="Waste preview" className="max-w-full h-auto rounded-xl shadow-md" />
+            <Image src={preview} alt="Waste preview" className="max-w-full h-auto rounded-xl shadow-md" />
           </div>
         )}
         

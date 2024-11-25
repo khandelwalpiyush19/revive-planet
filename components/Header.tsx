@@ -47,6 +47,7 @@ interface HeaderProps {
 }
 
 export default function Header({ onMenuClick }: HeaderProps) {
+  // eslint-disable-next-line
   const [provider, setProvider] = useState<IProvider | null>(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -259,11 +260,10 @@ export default function Header({ onMenuClick }: HeaderProps) {
                   >
                     <div className="flex flex-col">
                       <span className="font-medium">
-                      // eslint-disable-next-line
+                  { /*eslint-disable-next-line*/}
                       {notification.type}</span>
-                      <span className="text-sm 
-                      //eslint-disable-next-line
-                      text-gray-500">{notification.message}</span>
+                      { /*eslint-disable-next-line*/}
+                      <span className="text-sm text-gray-500">{notification.message}</span>
                     </div>
                   </DropdownMenuItem>
                 ))

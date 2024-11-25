@@ -1,4 +1,4 @@
-// @ts-nocheck
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import { useState, useEffect } from "react"
 import Link from "next/link"
@@ -96,7 +96,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
         const user = await getUserByEmail(userInfo.email);
         if (user) {
           const unreadNotifications = await getUnreadNotifications(user.id);
-          // eslint-disable-next-line
+         // @ts-ignore
           setNotifications(unreadNotifications);
         }
       }
@@ -195,7 +195,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
   const handleNotificationClick = async (notificationId: number) => {
     await markNotificationAsRead(notificationId);
     setNotifications(prevNotifications =>
-      // eslint-disable-next-line
+    // @ts-ignore
       prevNotifications.filter(notification => notification.id !== notificationId)
     );
   };
@@ -252,17 +252,17 @@ export default function Header({ onMenuClick }: HeaderProps) {
               {notifications.length > 0 ? (
                 notifications.map((notification) => (
                   <DropdownMenuItem
-                  // eslint-disable-next-line
+                    //@ts-ignore
                     key={notification.id}
                     onClick={() => handleNotificationClick
-                      // eslint-disable-next-line
+                      //@ts-ignore
                       (notification.id)}
                   >
                     <div className="flex flex-col">
                       <span className="font-medium">
-                  { /*eslint-disable-next-line*/}
+                  { /* @ts-ignore*/}
                       {notification.type}</span>
-                      { /*eslint-disable-next-line*/}
+                      { /* @ts-ignore*/}
                       <span className="text-sm text-gray-500">{notification.message}</span>
                     </div>
                   </DropdownMenuItem>

@@ -1,4 +1,4 @@
-// @ts-nocheck
+//@typescript-eslint/ban-ts-comment
 'use client'
 import { useState, useEffect } from 'react'
 import { ArrowRight, Leaf, Recycle, Users, Coins, MapPin, } from 'lucide-react'

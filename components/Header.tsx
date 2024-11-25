@@ -96,7 +96,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
         const user = await getUserByEmail(userInfo.email);
         if (user) {
           const unreadNotifications = await getUnreadNotifications(user.id);
-         //@ts-expect-error
+         //@ts-expect-error:This is a known issue in third-party library version 2.0.0
           setNotifications(unreadNotifications);
         }
       }
@@ -195,7 +195,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
   const handleNotificationClick = async (notificationId: number) => {
     await markNotificationAsRead(notificationId);
     setNotifications(prevNotifications =>
-     //@ts-expect-error
+     //@ts-expect-error:This is a known issue in third-party library version 2.0.0
       prevNotifications.filter(notification => notification.id !== notificationId)
     );
   };
@@ -252,17 +252,17 @@ export default function Header({ onMenuClick }: HeaderProps) {
               {notifications.length > 0 ? (
                 notifications.map((notification) => (
                   <DropdownMenuItem
-                     //@ts-expect-error
+                     //@ts-expect-error:This is a known issue in third-party library version 2.0.0
                     key={notification.id}
                     onClick={() => handleNotificationClick
-                       //@ts-expect-error
+                       //@ts-expect-error:This is a known issue in third-party library version 2.0.0
                       (notification.id)}
                   >
                     <div className="flex flex-col">
                       <span className="font-medium">
-                  { /*  @ts-expect-error*/}
+                  { /*  @ts-expect-error:This is a known issue in third-party library version 2.0.0*/}
                       {notification.type}</span>
-                      { /*@ts-expect-error*/}
+                      { /*@ts-expect-error:This is a known issue in third-party library version 2.0.0*/}
                       <span className="text-sm text-gray-500">{notification.message}</span>
                     </div>
                   </DropdownMenuItem>

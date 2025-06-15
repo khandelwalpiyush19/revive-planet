@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState, useEffect } from "react";
@@ -26,7 +25,6 @@ export default function RootLayout({
           console.log('user from layout', user);
 
           if (user) {
-            // eslint-disable-next-line
             const availableRewards = await getAvailableRewards(user.id) as any
             console.log('availableRewards from layout', availableRewards);
             setTotalEarnings(availableRewards)

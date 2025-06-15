@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client'
 import { useState, useCallback, useEffect } from 'react'
 import {  MapPin, Upload, CheckCircle, Loader } from 'lucide-react'
@@ -9,7 +8,6 @@ import { Libraries } from '@react-google-maps/api';
 import { createUser, getUserByEmail, createReport, getRecentReports } from '@/utils/db/actions';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast'
-import Image from 'next/image';
 
 const geminiApiKey = process.env.GEMINI_API_KEY;
 const googleMapsApiKey = process.env.GOOGLE_MAPS_API_KEY;
@@ -146,7 +144,7 @@ export default function ReportPage() {
           setVerificationStatus('failure');
         }
       } catch (error) {
-        console.log("error", error);
+        console.error('Failed to parse JSON response:', text);
         setVerificationStatus('failure');
       }
     } catch (error) {
@@ -171,7 +169,6 @@ export default function ReportPage() {
         newReport.amount,
         preview || undefined,
         verificationResult ? JSON.stringify(verificationResult) : undefined
-     // eslint-disable-next-line
       ) as any;
       
       const formattedReport = {
@@ -251,7 +248,7 @@ export default function ReportPage() {
         
         {preview && (
           <div className="mt-4 mb-8">
-            <Image src={preview} alt="Waste preview" className="max-w-full h-auto rounded-xl shadow-md" />
+            <img src={preview} alt="Waste preview" className="max-w-full h-auto rounded-xl shadow-md" />
           </div>
         )}
         

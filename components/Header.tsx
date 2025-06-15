@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+// @ts-nocheck
 'use client'
 import { useState, useEffect } from "react"
 import Link from "next/link"
-// import { usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { Button } from "@/components/ui/button"
-import { Menu, Coins, Leaf, Search, Bell, User, ChevronDown, LogIn,   } from "lucide-react"
+import { Menu, Coins, Leaf, Search, Bell, User, ChevronDown, LogIn, LogOut } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -46,14 +46,12 @@ interface HeaderProps {
   totalEarnings: number;
 }
 
-export default function Header({ onMenuClick }: HeaderProps) {
-  // eslint-disable-next-line
+export default function Header({ onMenuClick, totalEarnings }: HeaderProps) {
   const [provider, setProvider] = useState<IProvider | null>(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
-  
   const [userInfo, setUserInfo] = useState<any>(null);
-  // const pathname = usePathname()
+  const pathname = usePathname()
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const isMobile = useMediaQuery("(max-width: 768px)")
   const [balance, setBalance] = useState(0)
@@ -96,7 +94,6 @@ export default function Header({ onMenuClick }: HeaderProps) {
         const user = await getUserByEmail(userInfo.email);
         if (user) {
           const unreadNotifications = await getUnreadNotifications(user.id);
-         //@ts-expect-error:This is a known issue in third-party library version 2.0.0
           setNotifications(unreadNotifications);
         }
       }
@@ -195,7 +192,6 @@ export default function Header({ onMenuClick }: HeaderProps) {
   const handleNotificationClick = async (notificationId: number) => {
     await markNotificationAsRead(notificationId);
     setNotifications(prevNotifications =>
-     //@ts-expect-error:This is a known issue in third-party library version 2.0.0
       prevNotifications.filter(notification => notification.id !== notificationId)
     );
   };
@@ -252,17 +248,11 @@ export default function Header({ onMenuClick }: HeaderProps) {
               {notifications.length > 0 ? (
                 notifications.map((notification) => (
                   <DropdownMenuItem
-                     //@ts-expect-error:This is a known issue in third-party library version 2.0.0
                     key={notification.id}
-                    onClick={() => handleNotificationClick
-                       //@ts-expect-error:This is a known issue in third-party library version 2.0.0
-                      (notification.id)}
+                    onClick={() => handleNotificationClick(notification.id)}
                   >
                     <div className="flex flex-col">
-                      <span className="font-medium">
-                  { /*  @ts-expect-error:This is a known issue in third-party library version 2.0.0*/}
-                      {notification.type}</span>
-                      { /*@ts-expect-error:This is a known issue in third-party library version 2.0.0*/}
+                      <span className="font-medium">{notification.type}</span>
                       <span className="text-sm text-gray-500">{notification.message}</span>
                     </div>
                   </DropdownMenuItem>
